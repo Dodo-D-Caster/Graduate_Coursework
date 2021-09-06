@@ -1,0 +1,26 @@
+1. 修改hpe_app_image的源文件，增加一个index2.html，构建后运行访问网页，验证结果。
+
+2. cgroups资源限制练习
+   1. 启动两个脚本进程，将两个脚本进程的ID都写入同一个cgroup的tasks里会是什么结果？
+   2. 容器的CPU使用被限制为100m（ millicores千分之一）=100/1000=0.1核心
+   3. 限制容器只能使用128Mi内存
+
+3. 查找资料，在docker run的参数设置容器只能使用0.5Core CPU
+
+4. 描述4种网络模式各自的特点
+
+5. docker run容器网络类型练习
+   1. host模式：使用--net=host指定，查看容器的IP地址
+   2. container模式：使用--net=container:mysql指定连接到mysql容器，查看容器的IP地址
+
+6. 用docker network命令，列出虚机上默认安装的几个docker网络 ，并解释这些网络
+
+7. 创建一个名为mynet的network，创建一个名为mybox的busybox容器，先用ifconfig查看此容器的网口，
+   然后新开一个SHELL，运行命令将mybox容器接入mynet的网络里，查看容器网口的变化并说明
+
+8. 创建名为mybox2的容器，也连接到mynet的网络里，试试运行ping mybox，是否能ping通，并解释返回的结果
+
+9. 创建第三个名为mybox3的容器。第四个名为mybox4的容器，
+   确保mybox3可以跟mybox1互通，不能跟mybox2 与mybox4互通，
+   同时mybox2与mybox4互通。
+   最后阐述你对docker network的理解和感受
