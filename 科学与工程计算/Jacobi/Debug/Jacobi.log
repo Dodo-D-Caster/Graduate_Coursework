@@ -1,0 +1,4 @@
+﻿  源.cpp
+D:\c++Practise\ScienceandEngineerComputing\Jacobi\源.cpp(8,21): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\c++Practise\ScienceandEngineerComputing\Jacobi\源.cpp(14,21): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+  Jacobi.vcxproj -> D:\c++Practise\ScienceandEngineerComputing\Jacobi\Debug\Jacobi.exe

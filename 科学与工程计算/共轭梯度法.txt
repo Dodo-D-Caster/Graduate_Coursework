@@ -1,0 +1,60 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+int main()
+{
+    const int a[9]={4,3,0,3,4,-1,0,-1,4};
+    const int b[3]={3,5,-5};
+    double x[3]={0,0,0};
+
+    double r[3]={3,5,-5};
+    double p[3]={3,5,-5};
+    double alpha=0;
+    double r2[3]={0};
+    double beta=0;
+
+    int n=0;
+
+    while(fabs(r[0])>=0.0001||fabs(r[1])>=0.0001||fabs(r[2])>=0.0001){
+
+        //计算alpha （计算搜索步长）
+        alpha=1.0*(r[0]*r[0]+r[1]*r[1]+r[2]*r[2])/
+                ((p[0]*a[0]+p[1]*a[3]+p[2]*a[6])*p[0]+
+                (p[0]*a[1]+p[1]*a[4]+p[2]*a[7])*p[1]+
+                (p[0]*a[2]+p[1]*a[5]+p[2]*a[8])*p[2]);
+
+        //计算x (更新解)
+        for(int i=0;i<3;i++)
+            x[i]=x[i]+alpha*p[i];
+
+        //计算r2
+        for(int i=0;i<3;i++)
+            r2[i]=r[i];
+
+        //计算r（更新残差向量）
+        r[0]=r[0]-alpha*(a[0]*p[0]+a[1]*p[1]+a[2]*p[2]);
+        r[1]=r[1]-alpha*(a[3]*p[0]+a[4]*p[1]+a[5]*p[2]);
+        r[2]=r[2]-alpha*(a[6]*p[0]+a[7]*p[1]+a[8]*p[2]);
+
+        //计算beta
+        beta=1.0*(r[0]*r[0]+r[1]*r[1]+r[2]*r[2])/
+                (r2[0]*r2[0]+r2[1]*r2[1]+r2[2]*r2[2]);
+
+        //计算p（新的搜索方向）
+        for(int i=0;i<3;i++)
+            p[i]=r[i]+beta*p[i];
+
+        n++;
+
+        //输出
+        cout<<"第"<<n<<"次迭代结果："<<endl;
+        cout<<"Alpha="<<alpha<<endl;
+        cout<<"x("<<n<<")=("<<x[0]<<","<<x[1]<<","<<x[2]<<")T"<<endl;
+        cout<<"r~=("<<r2[0]<<","<<r2[1]<<","<<r2[2]<<")T"<<endl;
+        cout<<"r=("<<r[0]<<","<<r[1]<<","<<r[2]<<")T"<<endl;
+        cout<<"Beta="<<beta<<endl;
+        cout<<"p=("<<p[0]<<","<<p[1]<<","<<p[2]<<")T"<<endl;
+        cout<<endl;
+    }
+}
