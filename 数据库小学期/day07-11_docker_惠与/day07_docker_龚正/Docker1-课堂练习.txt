@@ -1,0 +1,40 @@
+
+docker run -it --name mysqlsrv1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456  mysql:5.7
+
+docker exec -it mysqlsrv1 bash
+mysql -uroot -p123456
+show databases;
+
+
+
+docker version
+
+
+docker info
+
+
+docker run hello-world
+
+
+docker run -d -p 80:80 --name webserver nginx
+
+
+docker run -it busybox sh
+
+
+docker run busybox iplink show eth0
+
+
+docker ps
+
+
+docker exec -it webserver bash
+docker exec -it 83c1fad37f8f bash
+
+
+
+docker inspect <containerId>
+
+docker logs <containerid>
+
+
